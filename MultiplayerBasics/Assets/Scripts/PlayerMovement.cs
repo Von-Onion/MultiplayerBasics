@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class PlayerMovement : NetworkBehaviour
 {     
     [SerializeField] private NavMeshAgent agent = null;
+    //There our know rules
 
     private Camera mainCamera;
 
@@ -32,13 +33,13 @@ public class PlayerMovement : NetworkBehaviour
     private void Update() {
         if(!hasAuthority) { return; }
 
-        if(!Input.GetButtonDown(1)) { return; }
+        if(!Input.GetMouseButtonDown(1)) { return; }
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) { return; }
 
-        
+        CmdMove(hit.point);
     }
 
     #endregion
