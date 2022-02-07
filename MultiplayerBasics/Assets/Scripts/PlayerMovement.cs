@@ -37,7 +37,7 @@ public class PlayerMovement : NetworkBehaviour
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) { return; }
+        if(!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity)) { return; }
 
         CmdMove(hit.point);
     }
